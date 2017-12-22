@@ -68,7 +68,14 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				.state({
 					name: 'permission',
 					url: '/permissions',
-					templateUrl: 'partials/permissions/list.html'
+					templateUrl: 'partials/permissions/list.html',
+					controller: 'PermissionListCtrl',
+				})
+				.state({
+					name: 'permissionEdit',
+					url: '/permissions/:id',
+					templateUrl: 'partials/permissions/edit.html',
+					controller: 'PermissionEditCtrl',
 				})
 			;
 		}

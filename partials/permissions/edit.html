@@ -1,0 +1,21 @@
+<h1>Permission Edit</h1>
+
+<form ng-submit="save()" ng-model-options="{ updateOn: 'submit' }">
+	<div class="form-group">
+		<label for="firstname">Name</label>
+		<input type="text" class="form-control disabled" id="name" placeholder="Name" ng-model="permission.name" disabled>
+	</div>
+	<div class="form-group">
+		<label for="firstname">Description</label>
+		<textarea class="form-control" rows="3" id="description" placeholder="Description" ng-model="permission.description"></textarea>
+	</div>
+	<div class="form-group">
+		<label for="status">Status</label>
+		<select class="form-control" ng-model="permission.status">
+			<option value="active">Active</option>
+			<option value="inactive">Inactive</option>
+		</select>
+	</div>
+	<button type="submit" class="btn btn-primary">Save</button>
+	<button type="button" class="btn btn-danger" ng-click="cancel()">Cancel</button>
+</form>

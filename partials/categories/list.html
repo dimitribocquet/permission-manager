@@ -6,6 +6,7 @@
 			<th>ID</th>
 			<th>Name</th>
 			<th>Status</th>
+			<th>Permissions</th>
 			<th>Action</th>
 		</tr>
 	</thead>
@@ -13,6 +14,11 @@
 		<tr ng-repeat="category in categories">
 			<td>{{category.id}}</td>
 			<td>{{category.name}}</td>
+			<td>
+				<ul>
+					<li ng-repeat="permission in getPermissions(category)">{{permission.name}}</li>
+				</ul>
+			</td>
 			<td>
 				<span class="label label-md" ng-class="{'label-success':category.status == 'active', 'label-warning':category.status == 'inactive', 'label-danger':category.status == 'deleted'}">{{category.status}}</span>
 			</td>

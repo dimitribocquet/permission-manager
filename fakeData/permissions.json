@@ -1,0 +1,20 @@
+[
+	{
+		"id": 1,
+		"name": "users.list",
+		"description": "Can access to users list",
+		"status": "active"
+	},
+	{
+		"id": 2,
+		"name": "users.edit",
+		"description": "Can edit a user",
+		"status": "active"
+	},
+	{
+		"id": 3,
+		"name": "users.delete",
+		"description": "Can delete a user",
+		"status": "active"
+	}
+]

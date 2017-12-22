@@ -1,1 +1,34 @@
 <h1>Permissions</h1>
+
+<table class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="permission in permissions">
+			<td>{{permission.id}}</td>
+			<td>{{permission.name}}</td>
+			<td>{{permission.description}}</td>
+			<td>
+				<span class="label label-md" ng-class="{'label-success':permission.status == 'active', 'label-warning':permission.status == 'inactive', 'label-danger':permission.status == 'deleted'}">{{permission.status}}</span>
+			</td>
+			<td class="fit">
+					<a ui-sref="permissionEdit({id: permission.id})" class="btn btn-primary">Edit</a>
+					<button type="button" class="btn btn-warning" ng-if="permission.status == 'active'" ng-click="permission.status = 'inactive'">Disable</button>
+					<button type="button" class="btn btn-success" ng-if="permission.status == 'inactive'" ng-click="permission.status = 'active'">Enable</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<style type="text/css">
+	.table>tbody>tr>td {
+		vertical-align: middle;
+	}
+</style>
