@@ -1,0 +1,34 @@
+<h1>User Edit</h1>
+
+<form ng-submit="save()" ng-model-options="{ updateOn: 'submit' }">
+	<div class="form-group">
+		<label for="email">Email</label>
+		<input type="email" class="form-control" id="email" placeholder="Email" ng-model="user.email">
+	</div>
+	<div class="form-group">
+		<label for="username">Username</label>
+		<input type="text" class="form-control" id="username" placeholder="Username" ng-model="user.username">
+	</div>
+	<div class="form-group">
+		<label for="firstname">Firstname</label>
+		<input type="text" class="form-control" id="firstname" placeholder="Firstname" ng-model="user.firstname">
+	</div>
+	<div class="form-group">
+		<label for="lastname">Lastname</label>
+		<input type="text" class="form-control" id="lastname" placeholder="Lastname" ng-model="user.lastname">
+	</div>
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" class="form-control" id="password" placeholder="Password" ng-model="user.email">
+	</div>
+	<div class="form-group">
+		<label for="status">Status</label>
+		<select class="form-control" ng-model="user.status">
+			<option value="active">Active</option>
+			<option value="inactive">Inactive</option>
+			<option value="deleted">Deleted</option>
+		</select>
+	</div>
+	<button type="submit" class="btn btn-primary">Save</button>
+	<button type="button" class="btn btn-danger" ng-click="cancel()">Cancel</button>
+</form>

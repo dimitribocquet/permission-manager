@@ -1,0 +1,40 @@
+<h1>Users</h1>
+
+<table class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Username</th>
+			<th>Email</th>
+			<th>Status</th>
+			<th>Category</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="user in users">
+			<td>{{user.id}}</td>
+			<td>{{user.username}}</td>
+			<td>{{user.email}}</td>
+			<td>
+				<span class="label label-md" ng-class="{'label-success':user.status == 'active', 'label-warning':user.status == 'inactive', 'label-danger':user.status == 'deleted'}">{{user.status}}</span>
+			</td>
+			<td>
+				<a ui-sref="categoryEdit({id: user.categoryId})">{{getCategory(user).name}}</a>
+			</td>
+			<td class="fit">
+					<a ui-sref="userEdit({id: user.id})" class="btn btn-primary">Edit</a>
+					<button type="button" class="btn btn-warning" ng-if="user.status == 'active'" ng-click="user.status = 'inactive'">Disable</button>
+					<button type="button" class="btn btn-success" ng-if="user.status == 'inactive'" ng-click="user.status = 'active'">Enable</button>
+					<button type="button" class="btn btn-danger" ng-if="user.status !== 'deleted'" ng-click="user.status = 'deleted'">Delete</button>
+					<button type="button" class="btn btn-success" ng-if="user.status == 'deleted'" ng-click="user.status = 'active'">Restore</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<style type="text/css">
+	.table>tbody>tr>td {
+		vertical-align: middle;
+	}
+</style>

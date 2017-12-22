@@ -1,0 +1,18 @@
+<h1>Category Edit</h1>
+
+<form ng-submit="save()" ng-model-options="{ updateOn: 'submit' }">
+	<div class="form-group">
+		<label for="firstname">Name</label>
+		<input type="text" class="form-control" id="name" placeholder="Name" ng-model="category.name">
+	</div>
+	<div class="form-group">
+		<label for="status">Status</label>
+		<select class="form-control" ng-model="category.status">
+			<option value="active">Active</option>
+			<option value="inactive">Inactive</option>
+			<option value="deleted">Deleted</option>
+		</select>
+	</div>
+	<button type="submit" class="btn btn-primary">Save</button>
+	<button type="button" class="btn btn-danger" ng-click="cancel()">Cancel</button>
+</form>
