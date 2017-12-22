@@ -1,6 +1,11 @@
 var app = angular.module('permissionManagerApp');
 
 app.controller('UserEditCtrl', function ($scope, $state, $stateParams, UserFactory){
+	$scope.$on('$stateChangeError', function(e, toState, toParams, fromState, fromParams, error){
+	    if(error === "Not Authorized"){
+	        $state.go("notAuthorizedPage");
+	    }
+	});
 	var id = $stateParams.id;
 
 	$scope.id = id;

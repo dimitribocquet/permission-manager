@@ -32,20 +32,60 @@
 // 
 
 var app = angular.module('permissionManagerApp', [
-	'ui.router'
+	'ui.router',
+	'ngStorage'
 ]);
+
+app.run(function($rootScope, $location, $state, $transitions, AclFactory) {
+	console.log($state, $transitions);
+	
+	$transitions.onBefore({}, function(transition){
+		console.log('fdgdfg',transition.to().data);
+		return AclFactory.isAllowed(transition.from(), transition.to())
+			.then(function(result){
+				if(result){
+					console.log('result',result);
+					return true;
+				}else{
+					console.log('no', result);
+					return transition.router.stateService.target('dashboard');
+					
+				}
+			})
+			.catch(function(error){
+				console.log('error',error);
+				return transition.router.stateService.target('dashboard');
+				
+			})
+		;
+	})
+});
   
 app.config(['$stateProvider', '$urlRouterProvider',
 		function($stateProvider, $urlRouterProvider){
 
-			$urlRouterProvider.otherwise('/users');
+			$urlRouterProvider.otherwise('/dashboard');
 
 			$stateProvider
+				.state({
+					name: 'dashboard',
+					url: '/dashboard',
+					templateUrl: 'partials/dashboard.html',
+					controller: 'DashboardCtrl',
+				})
 				.state({
 					name: 'user',
 					url: '/users',
 					templateUrl: 'partials/users/list.html',
 					controller: 'UserListCtrl',
+					resolve: {
+						permission: function(){
+							return 'user.list';
+						}
+					},
+					data: {
+						permission: 'user.list'
+					}
 				})
 				.state({
 					name: 'userEdit',
