@@ -1,36 +1,3 @@
-// var app = angular.module('permissionManagerApp', [
-// 	'ngRoute'
-// ]);
-  
-// app.config(['$locationProvider', '$routeProvider',
-// 		function($locationProvider, $routeProvider){
-// 			$locationProvider.hashPrefix('!');
-
-// 			var routeCfg = {
-// 				controller: 'PermissionManagerCtrl',
-// 				templateUrl: 'templates/index.html'
-// 			};
-
-// 			$routeProvider
-// 				.when('/', routeCfg)
-// 				.otherwise({
-// 					redirectTo: '/'
-// 				})
-// 			;
-// 		}
-// 	])
-// ;
-
-// // app.directive('ngCustomBlur', function(){
-// // 	return function(scope, elem, attrs){
-// // 		elem.bind('blur', function(){
-// // 			scope.$apply(attrs.ngCustomBlur);
-// // 		});
-// // 	};
-// // });
-// 
-// 
-
 var app = angular.module('permissionManagerApp', [
 	'ui.router',
 	'ngStorage'
@@ -125,11 +92,3 @@ app.config(['$stateProvider', '$urlRouterProvider',
 		}
 	])
 ;
-
-// app.directive('ngCustomBlur', function(){
-// 	return function(scope, elem, attrs){
-// 		elem.bind('blur', function(){
-// 			scope.$apply(attrs.ngCustomBlur);
-// 		});
-// 	};
-// });
