@@ -1,20 +1,56 @@
 [
 	{
 		"id": 1,
-		"name": "users.list",
+		"name": "user.list",
 		"description": "Can access to users list",
 		"status": "active"
 	},
 	{
 		"id": 2,
-		"name": "users.edit",
+		"name": "user.edit",
 		"description": "Can edit a user",
 		"status": "active"
 	},
 	{
 		"id": 3,
-		"name": "users.delete",
+		"name": "user.delete",
 		"description": "Can delete a user",
+		"status": "active"
+	},
+	{
+		"id": 4,
+		"name": "category.list",
+		"description": "Can access to categories list",
+		"status": "active"
+	},
+	{
+		"id": 5,
+		"name": "category.edit",
+		"description": "Can edit a category",
+		"status": "active"
+	},
+	{
+		"id": 6,
+		"name": "category.delete",
+		"description": "Can delete a category",
+		"status": "active"
+	},
+	{
+		"id": 7,
+		"name": "permission.list",
+		"description": "Can access to permissions list",
+		"status": "active"
+	},
+	{
+		"id": 8,
+		"name": "permission.edit",
+		"description": "Can edit a permission",
+		"status": "active"
+	},
+	{
+		"id": 9,
+		"name": "permission.delete",
+		"description": "Can delete a permission",
 		"status": "active"
 	}
 ]

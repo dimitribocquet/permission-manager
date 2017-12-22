@@ -1,3 +1,17 @@
 <h1>Dashboard</h1>
 
-{{dash}}
+<div class="col-xs-12">
+	<h2>
+		You are logged as
+		<span ng-if="loggedUser">{{loggedUser.username}} ({{getCategory(loggedUser).name}})</span>
+		<span ng-if="!loggedUser">Visitor</span>
+	</h2>
+</div>
+
+<div class="col-xs-12">
+	Select a user : <br>
+
+	<button type="button" class="btn btn-primary" ng-repeat="user in users" ng-class="{'btn-primary': getCategory(user).id == 1, 'btn-warning': getCategory(user).id == 2}" ng-click="logAs(user)" ng-disabled="user.status !== 'active'">{{user.username}} ({{getCategory(user).name}})</button>
+
+	<button type="button" class="btn btn-default" ng-click="resetLogAs()">Visitor</button>
+</div>

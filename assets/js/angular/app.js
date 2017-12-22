@@ -36,24 +36,18 @@ var app = angular.module('permissionManagerApp', [
 	'ngStorage'
 ]);
 
-app.run(function($rootScope, $location, $state, $transitions, AclFactory) {
-	console.log($state, $transitions);
-	
+app.run(function($rootScope, $location, $state, $transitions, AclFactory) {	
 	$transitions.onBefore({}, function(transition){
-		console.log('fdgdfg',transition.to().data);
 		return AclFactory.isAllowed(transition.from(), transition.to())
 			.then(function(result){
 				if(result){
-					console.log('result',result);
 					return true;
 				}else{
-					console.log('no', result);
 					return transition.router.stateService.target('dashboard');
 					
 				}
 			})
 			.catch(function(error){
-				console.log('error',error);
 				return transition.router.stateService.target('dashboard');
 				
 			})
@@ -78,11 +72,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
 					url: '/users',
 					templateUrl: 'partials/users/list.html',
 					controller: 'UserListCtrl',
-					resolve: {
-						permission: function(){
-							return 'user.list';
-						}
-					},
 					data: {
 						permission: 'user.list'
 					}
@@ -92,30 +81,45 @@ app.config(['$stateProvider', '$urlRouterProvider',
 					url: '/users/:id',
 					templateUrl: 'partials/users/edit.html',
 					controller: 'UserEditCtrl',
+					data: {
+						permission: 'user.edit'
+					}
 				})
 				.state({
 					name: 'category',
 					url: '/categories',
 					templateUrl: 'partials/categories/list.html',
 					controller: 'CategoryListCtrl',
+					data: {
+						permission: 'category.list'
+					}
 				})
 				.state({
 					name: 'categoryEdit',
 					url: '/categories/:id',
 					templateUrl: 'partials/categories/edit.html',
 					controller: 'CategoryEditCtrl',
+					data: {
+						permission: 'category.edit'
+					}
 				})
 				.state({
 					name: 'permission',
 					url: '/permissions',
 					templateUrl: 'partials/permissions/list.html',
 					controller: 'PermissionListCtrl',
+					data: {
+						permission: 'permission.list'
+					}
 				})
 				.state({
 					name: 'permissionEdit',
 					url: '/permissions/:id',
 					templateUrl: 'partials/permissions/edit.html',
 					controller: 'PermissionEditCtrl',
+					data: {
+						permission: 'permission.edit'
+					}
 				})
 			;
 		}
