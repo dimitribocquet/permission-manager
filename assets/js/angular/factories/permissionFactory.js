@@ -17,6 +17,23 @@ app.factory('PermissionFactory', function ($http, $q){
 		}
 	}
 
+	f.getPermissionsOfCategory = function(category){
+		if(list.length == 0){
+			return $http.get('/fakeData/permissions.json')
+				.then(function(response){
+					list = response.data;
+					return list.filter(function(permission){
+						return category.permissionIds.find(function(id){
+							return id == permission.id;
+						})
+					});
+				})
+			;
+		}else{
+			return $q.resolve(list);
+		}
+	}
+
 	f.getPermission = function(id){
 		if(list.length == 0){
 			return $http.get('/fakeData/permissions.json')
