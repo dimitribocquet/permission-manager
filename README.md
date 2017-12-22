@@ -7,5 +7,5 @@ Install
 =======
 
 ```bash
-npm install ngstorage
+npm install
 ```
